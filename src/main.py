@@ -31,5 +31,9 @@ def call_script(script_path, arguments):
     result = BashOperations().run_script(script_path, arguments)
     click.echo(result)
 
+@cli.command()
+def flip_coin():
+    click.echo(BashOperations().flip_a_coin())
+
 if __name__ == '__main__':
     cli()
