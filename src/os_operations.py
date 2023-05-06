@@ -21,4 +21,3 @@ class OsOperations():
     def get_env_var(self, key):
         return os.getenv(key)
     
-OsOperations().get_env_vars()
