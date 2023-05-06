@@ -15,4 +15,10 @@ class OsOperations():
             exp = f'setx {key} "{value}"'
         subprocess.Popen(exp, shell=True).wait()
     
-OsOperations().set_env_var('paztest', '1')
+    def get_env_vars(self):
+        return dict(os.environ)
+    
+    def get_env_var(self, key):
+        return os.getenv(key)
+    
+OsOperations().get_env_vars()
