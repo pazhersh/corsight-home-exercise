@@ -2,14 +2,18 @@ import click
 from bash_operation import BashOperations
 from os_operations import OsOperations
 
+# note: the cli function won't be invoked of none of the subcommands were used
+# if CORSIGHT_ID_ENV should be set on a simple --help call, add the `invoke_without_command=True` to the group decorator
 @click.group()
-def cli():
+@click.option('--corsight_id', type=int, default=1)
+@click.pass_context
+def cli(context, corsight_id):
     '''
-    for any command you may add --help
-    for example:
+    for any command you may add --help \n
+    for example: \n
         main.py call-script --help
     '''
-    pass
+    OsOperations().set_env_var('CORSIGHT_ID', corsight_id)
 
 @cli.command()
 def get_env_vars():
