@@ -1,13 +1,12 @@
 import click
-from bash_operation import BashOperations
-from os_operations import OsOperations
+from corsight_home_exercise.bash_operation import BashOperations
+from corsight_home_exercise.os_operations import OsOperations
 
 # note: the cli function won't be invoked of none of the subcommands were used
 # if CORSIGHT_ID_ENV should be set on a simple --help call, add the `invoke_without_command=True` to the group decorator
 @click.group()
 @click.option('--corsight_id', type=int, default=1)
-@click.pass_context
-def cli(context, corsight_id):
+def cli(corsight_id):
     '''
     for any command you may add --help \n
     for example: \n
@@ -38,6 +37,3 @@ def call_script(script_path, arguments):
 @cli.command()
 def flip_coin():
     click.echo(BashOperations().flip_a_coin())
-
-if __name__ == '__main__':
-    cli()

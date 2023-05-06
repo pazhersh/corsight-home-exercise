@@ -2,11 +2,11 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name="corsight-home-exercise",
+    name="corsight_home_exercise",
+    __package__='corsight_home_exercise',
     version="1.0",
     author='Paz Hershberg',
     author_email='pazhersh@gmail.com',
-    packages=[
-        'click==8.1.3'
-    ]
+    packages=find_packages('src'),
+    py_modules=['corsight_home_exercise']
 )
