@@ -1,5 +1,6 @@
 import click
 from corsight_home_exercise.bash_operation import BashOperations
+from corsight_home_exercise.disk_operations import DiskOperations
 from corsight_home_exercise.os_operations import OsOperations
 
 # note: the cli function won't be invoked of none of the subcommands were used
@@ -13,6 +14,12 @@ def cli(corsight_id):
         main.py call-script --help
     '''
     OsOperations().set_env_var('CORSIGHT_ID', corsight_id)
+
+@cli.command()
+@click.argument('mount_path')
+def disk_size(mount_path):
+    '''disk-size <DISK_MOUT_PATH>'''
+    click.echo(DiskOperations().read_disk_stats(mount_path))
 
 @cli.command()
 def get_env_vars():
